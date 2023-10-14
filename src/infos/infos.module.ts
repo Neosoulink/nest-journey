@@ -1,4 +1,9 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { InfosService } from './infos.service';
 import { InfosController } from './infos.controller';
 
@@ -12,6 +17,8 @@ import { InfosMiddleware } from './infos.middleware';
 })
 export class InfosModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(InfosMiddleware).forRoutes('infos');
+    consumer
+      .apply(InfosMiddleware)
+      .forRoutes({ path: 'infos', method: RequestMethod.GET });
   }
 }
