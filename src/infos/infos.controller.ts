@@ -14,6 +14,7 @@ import { UpdateInfoDto } from './dto/update-info.dto';
 import { HttpExceptionFilter } from 'src/exceptions/http-exception.filter';
 
 @Controller('infos')
+@UseFilters(HttpExceptionFilter)
 export class InfosController {
   constructor(private readonly infosService: InfosService) {}
 
@@ -43,7 +44,6 @@ export class InfosController {
   }
 
   @Get('debug/error')
-  @UseFilters(HttpExceptionFilter)
   debugError() {
     return this.infosService.error();
   }
