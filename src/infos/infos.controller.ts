@@ -6,10 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  UseFilters,
 } from '@nestjs/common';
 import { InfosService } from './infos.service';
 import { CreateInfoDto } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
+import { HttpExceptionFilter } from 'src/exceptions/http-exception.filter';
 
 @Controller('infos')
 export class InfosController {
@@ -41,6 +43,7 @@ export class InfosController {
   }
 
   @Get('debug/error')
+  @UseFilters(new HttpExceptionFilter())
   debugError() {
     return this.infosService.error();
   }
