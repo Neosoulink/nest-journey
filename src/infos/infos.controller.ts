@@ -39,4 +39,9 @@ export class InfosController {
   remove(@Param('id') id: string) {
     return this.infosService.remove(+id);
   }
+
+  @Get('debug/error')
+  debugError() {
+    return this.infosService.error();
+  }
 }

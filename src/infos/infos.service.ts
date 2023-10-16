@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateInfoDto } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
 
@@ -22,5 +22,9 @@ export class InfosService {
 
   remove(id: number) {
     return `This action removes a #${id} info`;
+  }
+
+  error() {
+    throw new HttpException('forbidden', HttpStatus.FORBIDDEN);
   }
 }
