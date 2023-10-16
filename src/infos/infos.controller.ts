@@ -43,7 +43,7 @@ export class InfosController {
   }
 
   @Get('debug/error')
-  @UseFilters(new HttpExceptionFilter())
+  @UseFilters(HttpExceptionFilter)
   debugError() {
     return this.infosService.error();
   }
