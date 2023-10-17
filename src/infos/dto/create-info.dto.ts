@@ -5,4 +5,9 @@ export const createInfoSchema = z.object({
   name: z.string(),
 });
 
-export type CreateInfoDto = z.infer<typeof createInfoSchema>;
+export type createInfoDtoSchemaType = z.infer<typeof createInfoSchema>;
+
+export class CreateInfoDto implements createInfoDtoSchemaType {
+  id: createInfoDtoSchemaType['id'];
+  name: createInfoDtoSchemaType['name'];
+}
