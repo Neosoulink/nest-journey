@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 
 // PIPES
-import { ZodValidationPipe } from 'src/pipes/zodValidation.pipe';
+import { ZodValidationPipe } from '@/pipes/zodValidation.pipe';
 
 // SERVICES
 import { InfosService } from './infos.service';
@@ -22,7 +22,7 @@ import { CreateInfoDto, createInfoSchema } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
 
 // EXCEPTIONS
-import { HttpExceptionFilter } from 'src/exceptions/http-exception.filter';
+import { HttpExceptionFilter } from '@/exceptions/http-exception.filter';
 
 @Controller('infos')
 @UseFilters(HttpExceptionFilter)
