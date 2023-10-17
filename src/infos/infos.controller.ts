@@ -6,13 +6,12 @@ import {
   Patch,
   Param,
   Delete,
-  UseFilters,
   ParseIntPipe,
 } from '@nestjs/common';
 
 // PIPES
 // import { ZodValidationPipe } from '@/pipes/zodValidation.pipe';
-import { ClassValidationPipe } from '@/pipes/classValidation.pipe';
+// import { ClassValidationPipe } from '@/pipes/classValidation.pipe';
 
 // SERVICES
 import { InfosService } from './infos.service';
@@ -21,18 +20,14 @@ import { InfosService } from './infos.service';
 import { CreateInfoDto } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
 
-// EXCEPTIONS
-import { HttpExceptionFilter } from '@/exceptions/http-exception.filter';
-
 @Controller('infos')
-@UseFilters(HttpExceptionFilter)
 export class InfosController {
   constructor(private readonly infosService: InfosService) {}
 
   @Post()
   // @UsePipes(new ZodValidationPipe(createInfoSchema))
   async create(
-    @Body(new ClassValidationPipe())
+    @Body()
     createInfoDto: CreateInfoDto,
   ) {
     return this.infosService.create(createInfoDto);
