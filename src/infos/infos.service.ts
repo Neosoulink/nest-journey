@@ -1,16 +1,9 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  UsePipes,
-} from '@nestjs/common';
-import { CreateInfoDto, createInfoSchema } from './dto/create-info.dto';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { CreateInfoDto } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
-import { ZodValidationPipe } from 'src/pipes/zodValidation.pipe';
 
 @Injectable()
 export class InfosService {
-  @UsePipes(new ZodValidationPipe(createInfoSchema))
   create(createInfoDto: CreateInfoDto) {
     console.log(createInfoDto.id);
 
