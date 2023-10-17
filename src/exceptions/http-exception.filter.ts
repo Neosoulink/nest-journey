@@ -15,10 +15,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const status = exception.getStatus();
 
     return response.status(status).json({
-      message: exception.message,
-      statusCode: status,
+      ...exception,
       timestamp: new Date().toISOString(),
       path: request.url,
+      response: undefined,
+      options: undefined,
     });
   }
 }
