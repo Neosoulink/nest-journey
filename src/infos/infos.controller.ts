@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseFilters,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { InfosService } from './infos.service';
 import { CreateInfoDto } from './dto/create-info.dto';
@@ -29,7 +30,7 @@ export class InfosController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', ParseIntPipe) id: string) {
     return this.infosService.findOne(+id);
   }
 
