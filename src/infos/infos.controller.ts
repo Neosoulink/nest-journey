@@ -7,11 +7,15 @@ import {
   Param,
   Delete,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 
 // PIPES
 // import { ZodValidationPipe } from '@/pipes/zodValidation.pipe';
 // import { ClassValidationPipe } from '@/pipes/classValidation.pipe';
+
+// GUARDS
+import { InfosGuard } from './infos.guard';
 
 // SERVICES
 import { InfosService } from './infos.service';
@@ -21,6 +25,7 @@ import { CreateInfoDto } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
 
 @Controller('infos')
+@UseGuards(InfosGuard)
 export class InfosController {
   constructor(private readonly infosService: InfosService) {}
 
