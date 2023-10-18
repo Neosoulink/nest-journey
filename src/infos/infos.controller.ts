@@ -20,6 +20,9 @@ import { InfosGuard } from './infos.guard';
 // SERVICES
 import { InfosService } from './infos.service';
 
+// DECORATORS
+import { InfosPerms } from './infos.decorator';
+
 // DTO
 import { CreateInfoDto } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
@@ -31,6 +34,7 @@ export class InfosController {
 
   @Post()
   // @UsePipes(new ZodValidationPipe(createInfoSchema))
+  @InfosPerms(['max', 'sub-max'])
   async create(
     @Body()
     createInfoDto: CreateInfoDto,
