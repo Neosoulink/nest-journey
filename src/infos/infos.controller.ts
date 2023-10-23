@@ -8,7 +8,11 @@ import {
   Delete,
   ParseIntPipe,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
+
+// INTERCEPTORS
+import { InfosInterceptor } from './infos.interceptor';
 
 // PIPES
 // import { ZodValidationPipe } from '@/pipes/zodValidation.pipe';
@@ -29,6 +33,7 @@ import { UpdateInfoDto } from './dto/update-info.dto';
 
 @Controller('infos')
 @UseGuards(InfosGuard)
+@UseInterceptors(InfosInterceptor)
 export class InfosController {
   constructor(private readonly infosService: InfosService) {}
 
