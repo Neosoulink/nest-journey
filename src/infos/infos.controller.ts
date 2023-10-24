@@ -25,7 +25,7 @@ import { InfosGuard } from './infos.guard';
 import { InfosService } from './infos.service';
 
 // DECORATORS
-import { InfosPerms } from './infos.decorator';
+import { InfosData, InfosPerms } from './infos.decorator';
 
 // DTO
 import { CreateInfoDto } from './dto/create-info.dto';
@@ -53,8 +53,8 @@ export class InfosController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: string) {
-    return this.infosService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: string, @InfosData('name') data: any) {
+    return { message: this.infosService.findOne(+id), ...data };
   }
 
   @Patch(':id')
