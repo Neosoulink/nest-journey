@@ -16,6 +16,9 @@ import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
 // PIPES
 import { ClassValidationPipe } from './pipes/classValidation.pipe';
 
+// CONSTANTS
+import Providers from './enums/providers';
+
 @Module({
   imports: [InfosModule],
   controllers: [AppController],
@@ -28,6 +31,22 @@ import { ClassValidationPipe } from './pipes/classValidation.pipe';
     {
       provide: APP_INTERCEPTOR,
       useClass: ErrorsInterceptor,
+    },
+    {
+      provide: Providers.ASYNC_CONNECTION,
+      useFactory: async () => {
+        const promise = new Promise<string>((res) => {
+          setTimeout(() => {
+            console.log(
+              `Connection established ✅ | Token ${Providers.ASYNC_CONNECTION} registered`,
+            );
+
+            res('DATABASE_INSTANCE');
+          }, 5000);
+        });
+
+        return await promise;
+      },
     },
   ],
 })
