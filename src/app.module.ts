@@ -20,7 +20,7 @@ import { ClassValidationPipe } from './pipes/classValidation.pipe';
 import Providers from './enums/providers';
 
 @Module({
-  imports: [InfosModule],
+  imports: [InfosModule.forRoot([{}])],
   controllers: [AppController],
   providers: [
     AppService,

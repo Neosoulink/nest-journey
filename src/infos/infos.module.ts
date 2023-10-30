@@ -21,4 +21,15 @@ export class InfosModule implements NestModule {
       .apply(InfosMiddleware)
       .forRoutes({ path: 'infos', method: RequestMethod.GET });
   }
+
+  static forRoot(entity: any[] = [], options?) {
+    console.log(`Dynamic modules: ${InfosModule.name} ==>`, entity, options);
+
+    return {
+      module: InfosModule,
+      controllers: [InfosController],
+      providers: [InfosService],
+      exports: [InfosService],
+    };
+  }
 }
