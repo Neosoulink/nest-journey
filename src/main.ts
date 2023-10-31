@@ -15,7 +15,6 @@ import { HttpExceptionFilter } from './exceptions/http-exception.filter';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  // app.useGlobalPipes(new ClassValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());
 
   await app.listen(3000);
