@@ -1,7 +1,11 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import * as dotenv from 'dotenv';
-import { Inject, Injectable } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 
 // ENUMS
 import Providers from '@/enums/providers';
@@ -28,7 +32,9 @@ export class ConfigService {
 
       this.envConfig = dotenv.parse(readFileSync(envFile));
     } catch (error) {
-      console.warn('🚧 Something went wrong ===>', error);
+      throw new InternalServerErrorException('🚧 Something went wrong ===>', {
+        cause: error,
+      });
     }
   }
 
