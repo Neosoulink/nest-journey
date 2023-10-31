@@ -17,12 +17,13 @@ import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
 import { ClassValidationPipe } from './pipes/classValidation.pipe';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from './config/config/config.module';
 
 // CONSTANTS
 import Providers from './enums/providers';
 
 @Module({
-  imports: [InfosModule.forRoot([{}]), UsersModule, AuthModule],
+  imports: [InfosModule.forRoot([{}]), UsersModule, AuthModule, ConfigModule],
   controllers: [AppController],
   providers: [
     AppService,
