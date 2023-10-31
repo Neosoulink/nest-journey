@@ -9,15 +9,15 @@ import { AppController } from './app.controller';
 
 // MODULES
 import { InfosModule } from './infos/infos.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from './config/config/config.module';
 
 // INTERCEPTORS
 import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
 
 // PIPES
 import { ClassValidationPipe } from './pipes/classValidation.pipe';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
-import { ConfigModule } from './config/config/config.module';
 
 // CONSTANTS
 import Providers from './enums/providers';
