@@ -1,4 +1,5 @@
 import {
+  DynamicModule,
   MiddlewareConsumer,
   Module,
   NestModule,
@@ -22,7 +23,7 @@ export class InfosModule implements NestModule {
       .forRoutes({ path: 'infos', method: RequestMethod.GET });
   }
 
-  static forRoot(entity: any[] = [], options?) {
+  static forRoot(entity: any[] = [], options?): DynamicModule {
     console.log(`Dynamic modules: ${InfosModule.name} ==>`, entity, options);
 
     return {
