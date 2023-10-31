@@ -23,7 +23,12 @@ import { ClassValidationPipe } from './pipes/classValidation.pipe';
 import Providers from './enums/providers';
 
 @Module({
-  imports: [InfosModule.forRoot([{}]), UsersModule, AuthModule, ConfigModule],
+  imports: [
+    InfosModule.forRoot([{}]),
+    UsersModule,
+    AuthModule,
+    ConfigModule.register({ folder: './config' }),
+  ],
   controllers: [AppController],
   providers: [
     AppService,
@@ -45,7 +50,7 @@ import Providers from './enums/providers';
             );
 
             res('DATABASE_INSTANCE');
-          }, 5000);
+          }, 500);
         });
 
         return await promise;
