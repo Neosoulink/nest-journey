@@ -9,10 +9,16 @@ import Providers from '@/enums/providers';
 // INTERFACES
 import { ConfigOptions } from './interfaces';
 
+// DEFS
+import { ConfigurableModuleClass } from './config.module.definition';
+
 @Module({
   providers: [ConfigService],
 })
-export class ConfigModule implements NestModule {
+export class ConfigModule
+  extends ConfigurableModuleClass
+  implements NestModule
+{
   configure() {}
 
   static register(options: ConfigOptions): DynamicModule {
