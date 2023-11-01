@@ -1,14 +1,19 @@
 import {
+  DynamicModule,
   MiddlewareConsumer,
   Module,
   NestModule,
   RequestMethod,
 } from '@nestjs/common';
-import { InfosService } from './infos.service';
-import { InfosController } from './infos.controller';
 
 // MIDDLEWARES
 import { InfosMiddleware } from './infos.middleware';
+
+// SERVICES
+import { InfosService } from './infos.service';
+
+// CONTROLLERS
+import { InfosController } from './infos.controller';
 
 @Module({
   controllers: [InfosController],
@@ -22,7 +27,7 @@ export class InfosModule implements NestModule {
       .forRoutes({ path: 'infos', method: RequestMethod.GET });
   }
 
-  static forRoot(entity: any[] = [], options?) {
+  static forRoot(entity: any[] = [], options?): DynamicModule {
     console.log(`Dynamic modules: ${InfosModule.name} ==>`, entity, options);
 
     return {
