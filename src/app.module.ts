@@ -41,12 +41,12 @@ import Providers from './enums/providers';
       useClass: ErrorsInterceptor,
     },
     {
-      provide: Providers.ASYNC_CONNECTION,
+      provide: Providers.ASYNC_DATABASE_CONNECTION,
       useFactory: async () => {
         const promise = new Promise<string>((res) => {
           setTimeout(() => {
             console.log(
-              `Connection established ✅ | Token ${Providers.ASYNC_CONNECTION} registered`,
+              `Connection established ✅ | Token ${Providers.ASYNC_DATABASE_CONNECTION} registered`,
             );
 
             res('DATABASE_INSTANCE');

@@ -9,7 +9,8 @@ import { ConfigService } from './config/config.service';
 @Injectable()
 export class AppService {
   constructor(
-    @Inject(Providers.ASYNC_CONNECTION) private readonly database: string,
+    @Inject(Providers.ASYNC_DATABASE_CONNECTION)
+    private readonly database: string,
     private readonly configService: ConfigService,
   ) {}
 
