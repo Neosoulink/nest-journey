@@ -9,9 +9,6 @@ import {
 // MIDDLEWARES
 import { InfosMiddleware } from './infos.middleware';
 
-// MODULES
-import { ConfigModule } from '@/config/config.module';
-
 // SERVICES
 import { InfosService } from './infos.service';
 
@@ -19,7 +16,6 @@ import { InfosService } from './infos.service';
 import { InfosController } from './infos.controller';
 
 @Module({
-  imports: [ConfigModule],
   controllers: [InfosController],
   providers: [InfosService],
   exports: [InfosService],
