@@ -32,9 +32,11 @@ export class ConfigService {
 
       this.envConfig = dotenv.parse(readFileSync(envFile));
     } catch (error) {
-      throw new InternalServerErrorException('🚧 Something went wrong ===>', {
-        cause: error,
-      });
+      console.warn(
+        new InternalServerErrorException('🚧 Something went wrong ===>', {
+          cause: error,
+        }),
+      );
     }
   }
 
