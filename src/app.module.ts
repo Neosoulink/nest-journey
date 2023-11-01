@@ -57,5 +57,6 @@ import Providers from './enums/providers';
       },
     },
   ],
+  exports: [Providers.ASYNC_DATABASE_CONNECTION],
 })
 export class AppModule {}
