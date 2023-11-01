@@ -5,13 +5,21 @@ import {
   NestModule,
   RequestMethod,
 } from '@nestjs/common';
-import { InfosService } from './infos.service';
-import { InfosController } from './infos.controller';
 
 // MIDDLEWARES
 import { InfosMiddleware } from './infos.middleware';
 
+// MODULES
+import { ConfigModule } from '@/config/config.module';
+
+// SERVICES
+import { InfosService } from './infos.service';
+
+// CONTROLLERS
+import { InfosController } from './infos.controller';
+
 @Module({
+  imports: [ConfigModule],
   controllers: [InfosController],
   providers: [InfosService],
   exports: [InfosService],
