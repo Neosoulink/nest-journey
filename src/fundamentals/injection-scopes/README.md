@@ -17,6 +17,8 @@ We have three different kind of scopes for injections
   A new instance will be created for each consumer who will inject the provider.
   See: [InjectionScopesModule](./injection-scopes.module.ts?plain=1#L14)
 
+Note that **controllers** can be scoped too, see [InjectionScopesController](./injection-scopes.controller.ts?plain=1#L3)
+
 > 💡 It's recommended to stay in the **DEFAULT** parameter for caching purposes.
 > See the interface definition: [scope-options.interface.ts](https://github.com/nestjs/nest/blob/master/packages/common/interfaces/scope-options.interface.ts)
 

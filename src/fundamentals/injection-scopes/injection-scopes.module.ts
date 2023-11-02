@@ -3,6 +3,9 @@ import { Module, Provider, Scope } from '@nestjs/common';
 // SERVICES
 import { InjectionScopesService } from './injection-scopes.service';
 
+// CONTROLLERS
+import { InjectionScopesController } from './injection-scopes.controller';
+
 export const PROVIDERS: Provider[] = [
   InjectionScopesService,
   {
@@ -15,5 +18,6 @@ export const PROVIDERS: Provider[] = [
 
 @Module({
   providers: [...PROVIDERS],
+  controllers: [InjectionScopesController],
 })
 export class InjectionScopesModule {}
