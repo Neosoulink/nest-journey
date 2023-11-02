@@ -43,4 +43,8 @@ export class ConfigService {
   get(key: string): string {
     return this.envConfig[key];
   }
+
+  getConfigFolder() {
+    return this.options.folder;
+  }
 }

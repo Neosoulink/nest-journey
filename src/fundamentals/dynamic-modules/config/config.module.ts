@@ -1,5 +1,8 @@
 import { DynamicModule, Module, NestModule } from '@nestjs/common';
 
+// CONTROLLERS
+import { ConfigController } from './config.controller';
+
 // SERVICES
 import { ConfigService } from './config.service';
 
@@ -24,6 +27,7 @@ export class ConfigModule
   static register(options: ConfigOptions): DynamicModule {
     return {
       module: ConfigModule,
+      controllers: [ConfigController],
       providers: [
         {
           provide: Providers.CONFIG_OPTIONS,
