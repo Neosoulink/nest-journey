@@ -4,7 +4,7 @@ import { DynamicModule, Module, NestModule } from '@nestjs/common';
 import { ConfigService } from './config.service';
 
 // ENUMS
-import Providers from '@/enums/providers';
+import Providers from '../enums/providers';
 
 // INTERFACES
 import { ConfigOptions } from './interfaces';
