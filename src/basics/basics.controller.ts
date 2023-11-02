@@ -16,4 +16,9 @@ export class BasicsController {
   updateHello(): string {
     return this.basicsService.getHello();
   }
+
+  @Get('/database')
+  getDatabase(): string {
+    return this.basicsService.getDatabase();
+  }
 }
