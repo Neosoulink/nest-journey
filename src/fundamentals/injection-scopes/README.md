@@ -2,6 +2,9 @@
 
 ## Notes
 
+
+### Usage & understanding
+
 It's important to note that NodeJs doesn't follow the request/response multi thread.
 It means that, using singleton instance for a NestJs App is perfectly safe!
 
@@ -21,6 +24,11 @@ Note that **controllers** can be scoped too, see [InjectionScopesController](./i
 
 > 💡 It's recommended to stay in the **DEFAULT** parameter for caching purposes.
 > See the interface definition: [scope-options.interface.ts](https://github.com/nestjs/nest/blob/master/packages/common/interfaces/scope-options.interface.ts)
+
+### Durable provider
+
+I Implicitly not noted the durable providers here, cause I want to cover the [Module Reference](https://docs.nestjs.com/fundamentals/module-ref) first.
+This section may change in the future...
 
 ## Resources
 
