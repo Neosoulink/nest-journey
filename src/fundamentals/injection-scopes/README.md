@@ -2,7 +2,7 @@
 
 ## Notes
 
-t's important to note that NodeJs doesn't follow the request/response multi thread.
+It's important to note that NodeJs doesn't follow the request/response multi thread.
 It means that, using singleton instance for a NestJs App is perfectly safe!
 
 We have three different kind of scopes for injections
