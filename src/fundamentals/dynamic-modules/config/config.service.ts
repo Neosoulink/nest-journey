@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 
 // ENUMS
-import Providers from '@/enums/providers';
+import Providers from '../enums/providers';
 
 // INTERFACES
 import { ConfigOptions, EnvConfig } from './interfaces';
@@ -42,5 +42,9 @@ export class ConfigService {
 
   get(key: string): string {
     return this.envConfig[key];
+  }
+
+  getConfigFolder() {
+    return this.options.folder;
   }
 }

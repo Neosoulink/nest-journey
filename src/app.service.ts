@@ -1,28 +1,10 @@
-import { Inject, Injectable } from '@nestjs/common';
-
-// ENUMS
-import Providers from './enums/providers';
-
-// SERVICES
-import { ConfigService } from './config/config.service';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  constructor(
-    @Inject(Providers.ASYNC_DATABASE_CONNECTION)
-    private readonly database: string,
-    private readonly configService: ConfigService,
-  ) {}
+  constructor() {}
 
   getHello(): string {
     return 'Hello World!';
-  }
-
-  getDatabase(): string {
-    if (this.configService.get('database_visibility') === 'public') {
-      return this.database;
-    }
-
-    return 'Unable to see the database';
   }
 }
