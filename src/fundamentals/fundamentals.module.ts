@@ -7,6 +7,7 @@ import { DynamicModulesModule } from './dynamic-modules/dynamic-modules';
 import { InjectionScopesModule } from './injection-scopes/injection-scopes.module';
 import { CircularDependencyAService } from './circular-dependency/circular-dependency-a.service';
 import { CircularDependencyBService } from './circular-dependency/circular-dependency-b.service';
+import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { CircularDependencyBService } from './circular-dependency/circular-depen
     AsyncProvidersModulesModule,
     DynamicModulesModule,
     InjectionScopesModule,
+    CircularDependencyModule,
   ],
   controllers: [],
   providers: [CircularDependencyAService, CircularDependencyBService],
