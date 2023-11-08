@@ -8,6 +8,7 @@ import { InjectionScopesModule } from './injection-scopes/injection-scopes.modul
 import { CircularDependencyAService } from './circular-dependency/circular-dependency-a.service';
 import { CircularDependencyBService } from './circular-dependency/circular-dependency-b.service';
 import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
+import { ModuleReferenceModule } from './module-reference/module-reference.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CircularDependencyModule } from './circular-dependency/circular-depende
     DynamicModulesModule,
     InjectionScopesModule,
     CircularDependencyModule,
+    ModuleReferenceModule,
   ],
   controllers: [],
   providers: [CircularDependencyAService, CircularDependencyBService],
