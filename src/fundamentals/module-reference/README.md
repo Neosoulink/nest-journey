@@ -18,6 +18,18 @@ In case of scoped provider, the `ModuleRef` provider the `resolve` method that r
 
 See the [integration](./module-reference.service.ts#L17)
 
+> **🚧 Important:** The `resolve` method generate a unique instance from its own DI container sub tree. To get read of this, we've to create a context identifier that will keep the same context:
+>
+> ```typescript
+> // Inside the async method `onModuleInit`
+> const contextId = new ContextIdFactory.create();
+> const moduleRefCService = Promise.all([
+>   await this.moduleRef.resolve(ModuleReferenceCService),
+>   await this.moduleRef.resolve(ModuleReferenceCService),
+> ]);
+> console.log(moduleRefCService[0] === moduleRefCService[1]); // true
+> ```
+
 ## Reference
 
 - [Module reference](https://docs.nestjs.com/fundamentals/module-ref)
