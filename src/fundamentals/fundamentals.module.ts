@@ -11,7 +11,6 @@ import { ModuleReferenceModule } from './module-reference/module-reference.modul
 // SERVICES
 import { CircularDependencyAService } from './circular-dependency/circular-dependency-a.service';
 import { CircularDependencyBService } from './circular-dependency/circular-dependency-b.service';
-
 @Module({
   imports: [
     CustomProvidesModule,

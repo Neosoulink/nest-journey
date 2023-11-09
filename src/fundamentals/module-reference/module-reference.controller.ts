@@ -9,8 +9,13 @@ export class ModuleReferenceController {
     private readonly moduleReferenceService: ModuleReferenceService,
   ) {}
 
-  @Get()
-  getServiceClassName() {
-    return this.moduleReferenceService.getClassNameByReference();
+  @Get('by-reference')
+  getModuleByRef() {
+    return this.moduleReferenceService.getModuleByRef();
+  }
+
+  @Get('scoped-by-reference')
+  getScopedModuleByRef() {
+    return this.moduleReferenceService.getScopedModuleByRef();
   }
 }
