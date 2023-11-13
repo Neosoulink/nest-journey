@@ -11,6 +11,7 @@ import { ModuleReferenceModule } from './module-reference/module-reference.modul
 // SERVICES
 import { CircularDependencyAService } from './circular-dependency/circular-dependency-a.service';
 import { CircularDependencyBService } from './circular-dependency/circular-dependency-b.service';
+import { LazyLoadingModule } from './lazy-loading/lazy-loading.module';
 @Module({
   imports: [
     CustomProvidesModule,
@@ -19,6 +20,7 @@ import { CircularDependencyBService } from './circular-dependency/circular-depen
     InjectionScopesModule,
     CircularDependencyModule,
     ModuleReferenceModule,
+    LazyLoadingModule,
   ],
   controllers: [],
   providers: [CircularDependencyAService, CircularDependencyBService],
