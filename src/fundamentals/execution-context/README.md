@@ -4,11 +4,15 @@ NestJs provide a bunch of class utils that can help to works with generic contex
 
 Here's two such classes:
 
-- ArgumentHost:
-  Provided bunch of method for retrieving the argument being passed as to the handler.
-  Generally set as `host` parameter, it's allows us choosing the appropriate context.
+## ArgumentHost
 
-  See the integration [here](./execution-context.filter.ts#L11)
-  </br>
+`ArgumentHost` provide a bunch of methods for retrieving the argument being passed as to the handler.
+Generally set as `host` parameter, it's allows us choosing the appropriate context.
 
-- ExecutionContext:
+See the integration [here](./execution-context.filter.ts#L11)
+
+## ExecutionContext
+
+`ExecutionContext` Extends from [`ArgumentHost`](#argumenthost) and provided additional details about the current context.
+
+See the integration [here](./execution-context.guard.ts#L7)
