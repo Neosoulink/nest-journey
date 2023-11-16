@@ -1,4 +1,9 @@
 import { Module } from '@nestjs/common';
 
-@Module({})
+// CONTROLLERS
+import { ExecutionContextController } from './execution-context.controller';
+
+@Module({
+  controllers: [ExecutionContextController],
+})
 export class ExecutionContextModule {}
