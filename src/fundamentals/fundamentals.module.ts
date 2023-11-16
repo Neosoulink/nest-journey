@@ -12,6 +12,7 @@ import { ModuleReferenceModule } from './module-reference/module-reference.modul
 import { CircularDependencyAService } from './circular-dependency/circular-dependency-a.service';
 import { CircularDependencyBService } from './circular-dependency/circular-dependency-b.service';
 import { LazyLoadingModule } from './lazy-loading/lazy-loading.module';
+import { ExecutionContextModule } from './execution-context/execution-context.module';
 @Module({
   imports: [
     CustomProvidesModule,
@@ -21,6 +22,7 @@ import { LazyLoadingModule } from './lazy-loading/lazy-loading.module';
     CircularDependencyModule,
     ModuleReferenceModule,
     LazyLoadingModule,
+    ExecutionContextModule,
   ],
   controllers: [],
   providers: [CircularDependencyAService, CircularDependencyBService],
