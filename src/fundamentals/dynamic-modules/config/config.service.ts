@@ -25,18 +25,21 @@ export class ConfigService {
       const filePath = `${process.env.NODE_ENV || 'development'}.env`;
       const envFile = resolve(
         __dirname,
-        '../../',
+        '../../../../',
         this.options.folder,
         filePath,
       );
 
       this.envConfig = dotenv.parse(readFileSync(envFile));
+      console.log('Env-config setup ✅ |', this.envConfig);
     } catch (error) {
-      console.warn(
-        new InternalServerErrorException('🚧 Something went wrong ===>', {
+      const ERROR = new InternalServerErrorException(
+        '🚧 Something went wrong ===>',
+        {
           cause: error,
-        }),
+        },
       );
+      console.warn(ERROR.message, (ERROR.cause as unknown as any)?.message);
     }
   }
 
