@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: nest-journey-postgres
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: nest-journey-db
