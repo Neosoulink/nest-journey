@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 
 // PROVIDERS
@@ -13,9 +13,6 @@ import { InfosModule } from './infos/infos.module';
 // INTERCEPTORS
 import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
 
-// PIPES
-import { ClassValidationPipe } from './pipes/classValidation.pipe';
-
 // CONSTANTS
 import Providers from './enums/providers';
 
@@ -26,7 +23,12 @@ import Providers from './enums/providers';
     BasicsService,
     {
       provide: APP_PIPE,
-      useClass: ClassValidationPipe,
+      useFactory: () =>
+        new ValidationPipe({
+          whitelist: true,
+          transform: true,
+          forbidNonWhitelisted: true,
+        }),
     },
     {
       provide: APP_INTERCEPTOR,

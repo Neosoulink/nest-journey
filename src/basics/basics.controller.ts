@@ -1,24 +1,52 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 
 // SERVICES
 import { BasicsService } from './basics.service';
 
-@Controller()
+// DTO
+import { CreateDto } from './dto/create.dto';
+import { UpdateDto } from './dto/update.dto';
+
+@Controller('basics')
 export class BasicsController {
   constructor(private readonly basicsService: BasicsService) {}
 
   @Get()
-  getHello(): string {
-    return this.basicsService.getHello();
-  }
-
-  @Post()
-  updateHello(): string {
-    return this.basicsService.getHello();
+  findAll(/* @Query() paginationQuery */) {
+    // const { limit, offset } = paginationQuery;
+    return this.basicsService.findAll();
   }
 
   @Get('/database')
-  getDatabase(): string {
+  getDatabase() {
     return this.basicsService.getDatabase();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.basicsService.findOne(id);
+  }
+
+  @Post()
+  create(@Body() createDto: CreateDto) {
+    return this.basicsService.create(createDto);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: number, @Body() updateDto: UpdateDto) {
+    return this.basicsService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.basicsService.remove(id);
   }
 }

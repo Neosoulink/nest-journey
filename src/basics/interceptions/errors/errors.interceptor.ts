@@ -1,7 +1,8 @@
 import {
-  BadRequestException,
   CallHandler,
   ExecutionContext,
+  HttpException,
+  HttpStatus,
   Injectable,
   NestInterceptor,
   RequestTimeoutException,
@@ -20,18 +21,21 @@ export class ErrorsInterceptor implements NestInterceptor {
     return next.handle().pipe(
       timeout(5000),
       catchError((err) => {
-        if (err instanceof TimeoutError) {
+        if (err instanceof TimeoutError)
           return throwError(() => new RequestTimeoutException());
-        }
 
         return throwError(
           () =>
-            new BadRequestException(undefined, {
-              cause: {
-                origin: err,
-                fromInterceptor: true,
+            new HttpException(
+              err.message ?? 'Something went wrong',
+              err.status ?? HttpStatus.BAD_REQUEST,
+              {
+                cause: {
+                  err,
+                  fromInterceptor: true,
+                },
               },
-            }),
+            ),
         );
       }),
     );
