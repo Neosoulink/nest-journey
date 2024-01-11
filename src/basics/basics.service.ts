@@ -1,7 +1,7 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 
 // ENTITIES
-import { Basics } from './entities/basics.entity';
+import { Basic } from './entities/basic.entity';
 
 // ENUMS
 import Providers from './enums/providers';
@@ -13,8 +13,8 @@ import { UpdateDto } from './dto/update.dto';
 @Injectable()
 export class BasicsService {
   constructor(
-    @InjectRepository(Basics)
-    private readonly basicRepository: Repository<Basics>,
+    @InjectRepository(Basic)
+    private readonly basicRepository: Repository<Basic>,
     @Inject(Providers.ASYNC_DATABASE_CONNECTION)
     private readonly database: string,
   ) {}
@@ -24,11 +24,14 @@ export class BasicsService {
   }
 
   findAll() {
-    return this.basicRepository.find();
+    return this.basicRepository.find({ relations: { types: true } });
   }
 
   async findOne(id: string) {
-    const item = await this.basicRepository.findOne({ where: { id: +id } });
+    const item = await this.basicRepository.findOne({
+      where: { id: +id },
+      relations: { types: true },
+    });
 
     if (!item) throw new NotFoundException(`Item ${id} not found`);
 

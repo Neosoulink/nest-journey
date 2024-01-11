@@ -15,13 +15,14 @@ import { InfosModule } from './infos/infos.module';
 import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
 
 // ENTITIES
-import { Basics } from './entities/basics.entity';
+import { Basic } from './entities/basic.entity';
+import { Type } from './entities/type.entity';
 
 // CONSTANTS
 import Providers from './enums/providers';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Basics]), InfosModule.forRoot([{}])],
+  imports: [TypeOrmModule.forFeature([Basic, Type]), InfosModule.forRoot([{}])],
   controllers: [BasicsController],
   providers: [
     BasicsService,
