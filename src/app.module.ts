@@ -9,9 +9,23 @@ import { AppController } from './app.controller';
 
 // SERVICES
 import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [BasicsModule, FundamentalModules],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'root',
+      password: 'root',
+      database: 'nest-journey-db',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+    BasicsModule,
+    FundamentalModules,
+  ],
   controllers: [AppController],
   providers: [AppService],
   exports: [],

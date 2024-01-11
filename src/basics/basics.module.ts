@@ -14,23 +14,14 @@ import { InfosModule } from './infos/infos.module';
 // INTERCEPTORS
 import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
 
+// ENTITIES
+import { Basics } from './entities/basics.entity';
+
 // CONSTANTS
 import Providers from './enums/providers';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'root',
-      password: 'root',
-      database: 'nest-journey-db',
-      autoLoadEntities: true,
-      synchronize: true,
-    }),
-    InfosModule.forRoot([{}]),
-  ],
+  imports: [TypeOrmModule.forFeature([Basics]), InfosModule.forRoot([{}])],
   controllers: [BasicsController],
   providers: [
     BasicsService,
