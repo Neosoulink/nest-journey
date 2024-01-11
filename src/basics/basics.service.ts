@@ -5,18 +5,16 @@ import { Basics } from './entities/basics.entity';
 
 // ENUMS
 import Providers from './enums/providers';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateDto } from './dto/create.dto';
+import { UpdateDto } from './dto/update.dto';
 
 @Injectable()
 export class BasicsService {
-  private data: Basics[] = [
-    {
-      id: 1,
-      name: 'One',
-      types: ['1', '2', '3'],
-    },
-  ];
-
   constructor(
+    @InjectRepository(Basics)
+    private readonly basicRepository: Repository<Basics>,
     @Inject(Providers.ASYNC_DATABASE_CONNECTION)
     private readonly database: string,
   ) {}
@@ -26,31 +24,35 @@ export class BasicsService {
   }
 
   findAll() {
-    return this.data;
+    return this.basicRepository.find();
   }
 
-  findOne(id: number) {
-    const item = this.data.find((item) => item.id === +id);
+  async findOne(id: string) {
+    const item = await this.basicRepository.findOne({ where: { id: +id } });
+
     if (!item) throw new NotFoundException(`Item ${id} not found`);
+
     return item;
   }
 
-  create(createDto: any) {
-    this.data.push(createDto);
-    return createDto;
+  create(createDto: CreateDto) {
+    const newEntity = this.basicRepository.create(createDto);
+    return this.basicRepository.save(newEntity);
   }
 
-  update(id: number, updateDto: any) {
-    const existingCoffee = this.findOne(id);
-    if (existingCoffee) {
-      console.log(updateDto);
-    }
+  async update(id: string, updateDto: UpdateDto) {
+    const preloadedEntity = await this.basicRepository.preload({
+      id: +id,
+      ...updateDto,
+    });
+
+    if (!preloadedEntity) throw new NotFoundException(`Item ${id} not found`);
+
+    return this.basicRepository.save(preloadedEntity);
   }
 
-  remove(id: string) {
-    const coffeeIndex = this.data.findIndex((item) => item.id === +id);
-    if (coffeeIndex >= 0) {
-      this.data.splice(coffeeIndex, 1);
-    }
+  async remove(id: string) {
+    const entity = await this.findOne(id);
+    return this.basicRepository.remove(entity);
   }
 }

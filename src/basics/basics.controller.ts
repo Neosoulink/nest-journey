@@ -31,7 +31,7 @@ export class BasicsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id') id: string) {
     return this.basicsService.findOne(id);
   }
 
@@ -41,7 +41,7 @@ export class BasicsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateDto: UpdateDto) {
+  update(@Param('id') id: string, @Body() updateDto: UpdateDto) {
     return this.basicsService.update(id, updateDto);
   }
 
