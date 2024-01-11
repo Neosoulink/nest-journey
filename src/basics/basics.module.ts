@@ -1,5 +1,6 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 // PROVIDERS
 import { BasicsService } from './basics.service';
@@ -17,7 +18,19 @@ import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
 import Providers from './enums/providers';
 
 @Module({
-  imports: [InfosModule.forRoot([{}])],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'root',
+      password: 'root',
+      database: 'nest-journey-db',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+    InfosModule.forRoot([{}]),
+  ],
   controllers: [BasicsController],
   providers: [
     BasicsService,
