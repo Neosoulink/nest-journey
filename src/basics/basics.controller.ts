@@ -12,8 +12,8 @@ import {
 import { BasicsService } from './basics.service';
 
 // DTO
-import { CreateDto } from './dto/create.dto';
-import { UpdateDto } from './dto/update.dto';
+import { CreateBasicDto } from './dto/create-basic.dto';
+import { UpdateBasicDto } from './dto/update-basic.dto';
 
 @Controller('basics')
 export class BasicsController {
@@ -36,12 +36,12 @@ export class BasicsController {
   }
 
   @Post()
-  create(@Body() createDto: CreateDto) {
+  create(@Body() createDto: CreateBasicDto) {
     return this.basicsService.create(createDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDto: UpdateDto) {
+  update(@Param('id') id: string, @Body() updateDto: UpdateBasicDto) {
     return this.basicsService.update(id, updateDto);
   }
 

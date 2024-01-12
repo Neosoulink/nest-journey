@@ -18,6 +18,6 @@ export class Basic {
   name: string;
 
   @JoinTable()
-  @ManyToMany(() => Type, (type) => type.basics)
+  @ManyToMany(() => Type, (type) => type.basics, { cascade: true })
   types: Type[];
 }
