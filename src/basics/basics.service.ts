@@ -1,16 +1,19 @@
+import { DataSource, Repository } from 'typeorm';
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 
 // ENTITIES
 import { Basic } from './entities/basic.entity';
+import { Type } from './entities/type.entity';
 
 // ENUMS
 import Providers from './enums/providers';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+
+// DTO
 import { CreateBasicDto } from './dto/create-basic.dto';
 import { UpdateBasicDto } from './dto/update-basic.dto';
-import { Type } from './entities/type.entity';
 import { PaginationQueryDto } from './common/dto/pagination-query.dto';
+import { EventEntity } from './event/event.entity';
 
 @Injectable()
 export class BasicsService {
@@ -20,6 +23,7 @@ export class BasicsService {
     @Inject(Providers.ASYNC_DATABASE_CONNECTION)
     private readonly database: string,
     @InjectRepository(Type) private readonly typeRepository: Repository<Type>,
+    private readonly dataSource: DataSource,
   ) {}
 
   getDatabase(): string {
@@ -73,6 +77,31 @@ export class BasicsService {
   async remove(id: string) {
     const entity = await this.findOne(id);
     return this.basicRepository.remove(entity);
+  }
+
+  async recommendBasic(basic: Basic) {
+    const queryRunner = this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      basic.recommendations++;
+
+      const recommendEvent = new EventEntity();
+      recommendEvent.name = `recommendation_${basic.recommendations}`;
+      recommendEvent.type = 'basic';
+      recommendEvent.payload = { basicId: basic.id };
+
+      await queryRunner.manager.save(basic);
+      await queryRunner.manager.save(recommendEvent);
+
+      await queryRunner.commitTransaction();
+    } catch {
+      await queryRunner.rollbackTransaction();
+    } finally {
+      await queryRunner.release();
+    }
   }
 
   private async preloadTypeByName(name: string) {

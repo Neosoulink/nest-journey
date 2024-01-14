@@ -46,6 +46,9 @@ export class BasicsController {
     return this.basicsService.update(id, updateDto);
   }
 
+  // @Post(':id')
+  // recommendation(@param('id')id: string, @Body() this){}
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.basicsService.remove(id);

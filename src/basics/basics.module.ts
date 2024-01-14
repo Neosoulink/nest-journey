@@ -17,12 +17,16 @@ import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
 // ENTITIES
 import { Basic } from './entities/basic.entity';
 import { Type } from './entities/type.entity';
+import { EventEntity } from './event/event.entity';
 
 // CONSTANTS
 import Providers from './enums/providers';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Basic, Type]), InfosModule.forRoot([{}])],
+  imports: [
+    TypeOrmModule.forFeature([Basic, Type, EventEntity]),
+    InfosModule.forRoot([{}]),
+  ],
   controllers: [BasicsController],
   providers: [
     BasicsService,

@@ -17,6 +17,9 @@ export class Basic {
   @Column()
   name: string;
 
+  @Column({ default: 0 })
+  recommendations: number;
+
   @JoinTable()
   @ManyToMany(() => Type, (type) => type.basics, { cascade: true })
   types: Type[];
