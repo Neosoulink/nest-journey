@@ -33,6 +33,9 @@ import Providers from './enums/providers';
           whitelist: true,
           transform: true,
           forbidNonWhitelisted: true,
+          transformOptions: {
+            enableImplicitConversion: true,
+          },
         }),
     },
     {

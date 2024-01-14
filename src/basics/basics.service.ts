@@ -10,6 +10,7 @@ import { Repository } from 'typeorm';
 import { CreateBasicDto } from './dto/create-basic.dto';
 import { UpdateBasicDto } from './dto/update-basic.dto';
 import { Type } from './entities/type.entity';
+import { PaginationQueryDto } from './common/dto/pagination-query.dto';
 
 @Injectable()
 export class BasicsService {
@@ -25,8 +26,12 @@ export class BasicsService {
     return this.database;
   }
 
-  findAll() {
-    return this.basicRepository.find({ relations: { types: true } });
+  findAll(paginationQueryDto: PaginationQueryDto) {
+    return this.basicRepository.find({
+      relations: { types: true },
+      skip: paginationQueryDto.offset,
+      take: paginationQueryDto.limit,
+    });
   }
 
   async findOne(id: string) {
