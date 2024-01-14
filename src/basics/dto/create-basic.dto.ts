@@ -11,4 +11,7 @@ export class CreateBasicDto
 
   @IsString({ each: true })
   readonly types: string[];
+
+  @IsString()
+  readonly description?: string;
 }
