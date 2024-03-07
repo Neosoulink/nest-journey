@@ -15,6 +15,7 @@ import { UpdateBasicDto } from './dto/update-basic.dto';
 import { PaginationQueryDto } from './common/dto/pagination-query.dto';
 import { EventEntity } from './event/event.entity';
 
+// Basic Service definition using the `@injectable` decorator
 @Injectable()
 export class BasicsService {
   constructor(

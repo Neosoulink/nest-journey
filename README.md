@@ -5,24 +5,16 @@
 Hey, hello, how's going 🙂?
 
 This is a documentation of me learning NestJs, coding, discovering, testing, etc.
-There's not much to say about this one, hope you'll enjoy it and can help you at some point.
+Hope you'll find it useful and can help you at some point.
 
-## 💻 Start the app
-
-First, install the dependencies:
+## 💻 Run the project
 
 ```bash
-npm install
-```
-
-And run the project:
-
-```bash
-# watch mode
+# Install the dependencies
+$ npm install
+# Run the project in watch mode
 $ npm run start:dev
 ```
-
-This repo is based on the [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## 🔖 Chapters
 
@@ -32,4 +24,5 @@ This repo is based on the [Nest](https://github.com/nestjs/nest) framework TypeS
 
 ## ✨ Credits and resources
 
-This documentation is based on the official [NestJs docs 🐈](https://docs.nestjs.com/)
+This documentation is based on the official [NestJs docs 🐈](https://docs.nestjs.com/).
+And, this repository is based on the [Nest TypeScript](https://github.com/nestjs/typescript-starter) starter.
