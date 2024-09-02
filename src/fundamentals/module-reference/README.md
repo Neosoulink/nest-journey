@@ -1,6 +1,6 @@
 # Module reference
 
-Nest provides the [`ModuleRef`](https://github.com/nestjs/nest/blob/master/packages/core/injector/module-ref.ts#L25) class importable from `@nest/core` to get the providers internal list and get any providers reference using its injection token.
+Nest provides the [`ModuleRef`](https://github.com/nestjs/nest/blob/master/packages/core/injector/module-ref.ts#L25) class importable from `@nest/core` to get the provider's internal list and get any provider's reference using its injection token.
 
 See the [integration](./module-reference.service.ts)
 
@@ -14,7 +14,7 @@ See the [integration](./module-reference.service.ts#L16)
 
 ## Resolve scoped providers
 
-In case of scoped provider, the `ModuleRef` provider the `resolve` method that return a unique instance of the provider
+In the case of a scoped provider, the `ModuleRef` provider is the `resolve` method that returns a unique instance of the provider
 
 See the [integration](./module-reference.service.ts#L17)
 
