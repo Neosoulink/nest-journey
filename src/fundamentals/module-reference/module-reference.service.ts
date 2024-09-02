@@ -1,7 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
 
-// SERVICES
 import { ModuleReferenceBService } from './module-reference-b.service';
 import { ModuleReferenceCService } from './module-reference-c.service';
 

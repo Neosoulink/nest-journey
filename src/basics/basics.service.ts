@@ -2,21 +2,16 @@ import { DataSource, Repository } from 'typeorm';
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-// ENTITIES
+import { default as Providers } from './enums/providers';
 import { Basic } from './entities/basic.entity';
 import { Type } from './entities/type.entity';
-
-// ENUMS
-import Providers from './enums/providers';
-
-// DTO
+import { EventEntity } from './event/event.entity';
 import { CreateBasicDto } from './dto/create-basic.dto';
 import { UpdateBasicDto } from './dto/update-basic.dto';
 import { PaginationQueryDto } from './common/dto/pagination-query.dto';
-import { EventEntity } from './event/event.entity';
 
-// Basic Service definition using the `@injectable` decorator
 @Injectable()
+/** @description Basic Service definition using the `@injectable` decorator. */
 export class BasicsService {
   constructor(
     @InjectRepository(Basic)

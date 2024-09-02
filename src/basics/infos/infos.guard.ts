@@ -3,7 +3,6 @@ import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
 import { Observable } from 'rxjs';
 
-// DECORATORS
 import { InfosPerms } from './infos.decorator';
 
 @Injectable()

@@ -9,10 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 
-// SERVICES
 import { BasicsService } from './basics.service';
-
-// DTO
 import { CreateBasicDto } from './dto/create-basic.dto';
 import { UpdateBasicDto } from './dto/update-basic.dto';
 import { PaginationQueryDto } from './common/dto/pagination-query.dto';

@@ -1,18 +1,9 @@
 import { DynamicModule, Module, NestModule } from '@nestjs/common';
 
-// CONTROLLERS
+import { default as Providers } from '../enums/providers';
 import { ConfigController } from './config.controller';
-
-// SERVICES
 import { ConfigService } from './config.service';
-
-// ENUMS
-import Providers from '../enums/providers';
-
-// INTERFACES
 import { ConfigOptions } from './interfaces';
-
-// DEFS
 import { ConfigurableModuleClass } from './config.module.definition';
 
 @Module({

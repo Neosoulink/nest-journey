@@ -1,6 +1,5 @@
 import { IsString } from 'class-validator';
 
-// ENTITIES
 import { Basic } from '../entities/basic.entity';
 
 export class CreateBasicDto

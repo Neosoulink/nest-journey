@@ -2,25 +2,14 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-// PROVIDERS
-import { BasicsService } from './basics.service';
-
-// CONTROLLERS
-import { BasicsController } from './basics.controller';
-
-// MODULES
-import { InfosModule } from './infos/infos.module';
-
-// INTERCEPTORS
+import { default as Providers } from './enums/providers';
 import { ErrorsInterceptor } from './interceptions/errors/errors.interceptor';
-
-// ENTITIES
 import { Basic } from './entities/basic.entity';
 import { Type } from './entities/type.entity';
 import { EventEntity } from './event/event.entity';
-
-// CONSTANTS
-import Providers from './enums/providers';
+import { InfosModule } from './infos/infos.module';
+import { BasicsService } from './basics.service';
+import { BasicsController } from './basics.controller';
 
 @Module({
   imports: [

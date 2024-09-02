@@ -1,10 +1,8 @@
 import { Inject, Injectable, Scope } from '@nestjs/common';
 import { INQUIRER } from '@nestjs/core';
 
-/**
- * Using `REQUEST` scoped service provider
- */
 @Injectable({ scope: Scope.REQUEST })
+/** @description Using `REQUEST` scoped service provider. */
 export class InjectionScopesService {
   // Inquirer injection
   constructor(@Inject(INQUIRER) private parentClass: object) {}

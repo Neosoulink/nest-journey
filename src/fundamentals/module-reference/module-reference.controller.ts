@@ -1,6 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
 
-// SERVICES
 import { ModuleReferenceService } from './module-reference.service';
 
 @Controller('fundamentals/module-reference')

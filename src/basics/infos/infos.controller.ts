@@ -9,26 +9,15 @@ import {
   ParseIntPipe,
   UseGuards,
   UseInterceptors,
+  UsePipes,
 } from '@nestjs/common';
 
-// INTERCEPTORS
 import { InfosInterceptor } from './infos.interceptor';
-
-// PIPES
-// import { ZodValidationPipe } from '@/pipes/zodValidation.pipe';
-// import { ClassValidationPipe } from '@/pipes/classValidation.pipe';
-
-// GUARDS
-import { InfosGuard } from './infos.guard';
-
-// SERVICES
+import { ZodValidationPipe } from '../pipes/zodValidation.pipe';
 import { InfosService } from './infos.service';
-
-// DECORATORS
+import { InfosGuard } from './infos.guard';
 import { InfosData, InfosPerms } from './infos.decorator';
-
-// DTO
-import { CreateInfoDto } from './dto/create-info.dto';
+import { CreateInfoDto, createInfoSchema } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
 
 @Controller('infos')
@@ -38,7 +27,7 @@ export class InfosController {
   constructor(private readonly infosService: InfosService) {}
 
   @Post()
-  // @UsePipes(new ZodValidationPipe(createInfoSchema))
+  @UsePipes(new ZodValidationPipe(createInfoSchema))
   @InfosPerms(['max', 'sub-max'])
   async create(
     @Body()

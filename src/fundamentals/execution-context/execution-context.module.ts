@@ -1,10 +1,7 @@
 import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 
-// CONTROLLERS
 import { ExecutionContextController } from './execution-context.controller';
-
-// GUARDS
 import { ExecutionContextGuard } from './execution-context.guard';
 
 @Module({
